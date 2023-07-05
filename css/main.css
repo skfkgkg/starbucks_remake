@@ -1,0 +1,597 @@
+/* 폰트 설정 */
+/* import형식으로 가지고 올때에도 내가 만들 CSS보다 위에다 선언 */
+/* @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap'); */
+
+.hidden{display: none;}
+
+/* 앞으로 만들 css아래에  */
+
+/* common : 공통의 스타일 정의 */
+body{font-family: 'Nanum Gothic', sans-serif;color: #333;font-weight: 400;line-height: 1.4;}
+
+img{display: block;}
+
+.inner{width: 1100px;margin: auto;position: relative;}
+
+.btn{width: 130px;padding: 10px;border: 2px solid #333;border-radius: 4px;color: #333;font-weight: bold;text-align: center;display: block;box-sizing: border-box;transition: all 0.4s;cursor: pointer;}
+.btn:hover{background: #333;color: #fff;}
+
+.btn.btn--brown{color: #816F41;border-color: #816F41;}
+.btn.btn--brown:hover{background: #816F41;color: #fff;}
+
+.btn.btn--white{color: #fff;border-color: #fff;}
+.btn.btn--white:hover{background: #fff;color: #333;}
+
+.btn.btn--gold{color: #d9aa8a;border-color: #d9aa8a;}
+.btn.btn--gold:hover{background: #d9aa8a;color: #fff;}
+
+.btn.btn--revers{background: #333;color: #fff;}
+.btn.btn--revers:hover{background: transparent; color: #333;}
+
+/* scroll Magic으로 연결할 CSS----------------------------------------------- */
+/* 맨처음 브라우저 로딩시 안보이게 설정 */
+.back-to-position{
+  opacity: 0;
+  transition: all 1s;
+}
+
+/* 왼쪽 > 오른쪽 등장하는 모션의 시작위치 */
+.back-to-position.to-right{transform: translateX(-150px);}
+
+/* 오른쪽 > 왼쪽으로 등장하는 모션의 시작위치 */
+.back-to-position.to-left{transform: translateX(-150px);}
+
+/* show가 추가가되면 실행할 모션-------------- */
+.show .back-to-position{opacity: 1;transform: translateX(0);}
+.show .back-to-position.delay-0{transition-delay: 0;}
+.show .back-to-position.delay-1{transition-delay: 0.3s;}
+.show .back-to-position.delay-2{transition-delay: 0.6s;}
+.show .back-to-position.delay-3{transition-delay: 0.9s;}
+
+
+/* ------------------------------------------------------------ */
+
+/* HEADER 헤더영역-------------------------------------- */
+/* 헤더 영역 */
+header{
+  width: 100%;
+  background: #f6f5f0;
+  border-bottom: 1px solid #c3c3c3;
+  position: fixed;
+  justify-content: space-around;
+  top: 0;
+  z-index: 10;
+}
+header .inner{height: 120px;}
+header .inner h1{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 75px;
+}
+header .inner .sub-menu{
+  position: absolute;
+  right: 0;
+  top: 10px;
+  display: flex;
+}
+header .inner .sub-menu ul.menu{display: flex;}
+header .inner .sub-menu ul.menu li{position: relative;}
+header .inner .sub-menu ul.menu li::before{
+  content: "";
+  display: block;
+  width: 1px;
+  height: 12px;
+  background: #e5e5e5;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+header .inner .sub-menu ul.menu li a{
+  display: block;
+  padding: 10px;
+  font-size: 13px;
+  color: #656565;
+}
+header .inner .sub-menu ul.menu li a:hover{color: #000;}
+header .inner .sub-menu ul.menu li:first-child::before{display: none;}
+
+header .inner .sub-menu .search{
+  height: 35px;
+  position: relative;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+header .inner .sub-menu .search input{
+  height: 28px;
+  width: 30px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: #fff;
+  text-indent: 5px;
+}
+header .inner .sub-menu .search input:focus{
+  width: 150px;
+  border: 1px solid #669900;
+  outline: none;
+}
+
+
+header .inner .sub-menu .search span{
+  position: absolute;
+  top: 5px;
+  bottom: 0;
+  margin: auto;
+  left: 5px;
+  right: 0;
+}
+header .inner .sub-menu .search.focused span{opacity: 0;}
+
+/* main menu---------- */
+header .inner nav ul.main-menu{
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+header .inner nav ul.main-menu > li .item__name{
+  padding: 10px 20px 30px;
+  cursor: pointer;
+  font-size: 14px;
+}
+header .inner nav ul.main-menu > li:hover .item__name{
+  background: #2c2a29;color: #669900;
+  text-decoration: underline;
+  border-radius: 6px 6px 0 0;
+}
+
+header .inner nav ul.main-menu > li .item__contents{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  display: none;
+}
+header .inner nav ul.main-menu > li:hover .item__contents{display: block;}
+
+/* 1층 */
+header .inner nav ul.main-menu > li .item__contents .contents__menu{background: #2c2a29;height: 320px;}
+.item__contents ul.inner{display: flex;padding: 20px 0 40px;height: 230px;}
+.item__contents ul.inner li{padding: 0 50px;}
+.item__contents ul.inner li h4{font-size: 14px;color: #fff;font-weight: bold;padding: 3px 0 15px;}
+.item__contents ul.inner li h4:hover{text-decoration: underline;}
+.item__contents ul.inner li > ul li{font-size: 12px;color: #999;cursor: pointer;padding: 5px 0;}
+.item__contents ul.inner li > ul li:hover{text-decoration: underline;}
+
+/* 뱃지영역------------------------------ */
+.badges{position: fixed;top:150px;right: 40px;z-index: 20;}
+.badges div{margin-bottom: 15px;}
+.badges div img{border-radius: 10px;cursor: pointer;}
+
+/* main visual area-------------------------- */
+.visual{width: 100%;height: 650px;margin-top: 120px;position: relative;}
+.visual h4 .visual-bg{width: 100%;position: absolute;height: 650px;}
+.visual .inner{height: 650px;}
+.visual .inner .title{position: absolute;top: 200px;left: -150px;}
+.visual .inner .title a.btn{position: absolute;top:170px;left: 120px;height: 40px;line-height: 15px;font-weight: normal;font-size: 15px;}
+.visual .inner .img-box .cup1.image{position: absolute;bottom: 100px;right: 420px;z-index: 1;}
+.visual .inner .img-box .cup2.image{position: absolute;bottom: 100px;right: -60px;z-index: 2;}
+.visual .inner .img-box .cup3.image{position: absolute;bottom: 250px;right: -140px;}
+.visual .inner .img-box .cup4.image{position: absolute;bottom: 250px;left: 310px;}
+.visual .inner .img-box .spoon{position: absolute;bottom: 0;left: 250px;}
+
+.visual .fade-in{opacity: 0;}
+
+/* 공지사항 area --------------------------------------------- */
+.notice .notice-line{position: relative;}
+.notice .notice-line .bg-left{position: absolute;top: 0;left: 0;width: 50%;height: 100%;background: #333;}
+.notice .notice-line .bg-right{position: absolute;top: 0;right: 0;width: 50%;height: 100%;background: #f6f5ef;}
+
+.notice .notice-line .inner{display: flex;height: 65px;}
+.notice .notice-line > .inner > .inner__left{width: 60%;height: 100%;background: #333;display: flex;align-items: center;}
+.notice .notice-line > .inner > .inner__left h2{color: #fff;font-size: 17px;width: 80px;font-weight: 700;}
+.notice .notice-line > .inner > .inner__left .more{display: block;width: 62px;height: 62px;display: flex;align-items: center;margin-right: 20px;}
+.notice .notice-line > .inner > .inner__left .more span{font-size: 35px;color: #fff;}
+
+
+/* 공지사항 area --------------------------------------------- */
+.notice{width: 100%;}
+.notice .notice-line{position: relative;}
+.notice .notice-line .bg-left{position: absolute;top: 0;left: 0;width: 50%;height: 100%;background: #333;}
+.notice .notice-line .bg-right{position: absolute;top: 0;right: 0;width: 50%;height: 100%;background: #f6f5ef;}
+
+.notice .notice-line .inner{display: flex;height: 65px;}
+.notice .notice-line > .inner > .inner__left{width: 60%;height: 100%;background: #333;display: flex;align-items: center;}
+.notice .notice-line > .inner > .inner__left h2{color: #fff;font-size: 17px;width: 80px;font-weight: 700;}
+.notice .notice-line > .inner > .inner__left .more{display: block;width: 62px;height: 62px;display: flex;align-items: center;margin-right: 20px;}
+.notice .notice-line > .inner > .inner__left .more span{font-size: 35px;color: #fff;}
+
+/* 공지사항 : swiper slide */
+.notice .notice-line > .inner > .inner__left .swiper{
+  height: 65px;
+}
+.notice .notice-line > .inner > .inner__left .swiper .swiper-slide{display: flex;align-items: center;;}
+.notice .notice-line > .inner > .inner__left .swiper a{color: #fff;}
+
+.notice .notice-line > .inner > .inner__right{width: 40%;height: 100%;background: #f6f5ef;display: flex;justify-content: center;align-items: center;}
+.notice .notice-line > .inner > .inner__right h2{margin-right: 10px;}
+.notice .notice-line > .inner > .inner__right span{font-size: 35px;cursor: pointer;}
+
+/* promotion Swiper slide */
+.notice .promotion{width: 100%;height: 670px;background: #f6f5ef;position: relative;transition: height 0.4s;overflow: hidden;}
+.notice .promotion.hide{height: 0;}
+
+.notice .promotion .swiper{
+  width: calc(819px * 3 + 20px);
+  height: 600px;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  margin-left: calc((819px * 3 + 20px) / -2); /*가운데정렬*/
+}
+.notice .promotion .swiper .swiper-wrapper{
+  display: flex;
+}
+.notice .promotion .swiper .swiper-slide{opacity: 0.5;transition: opacity 1s;position: relative;}
+.notice .promotion .swiper .swiper-slide-active{opacity: 1;}
+.notice .promotion .swiper .swiper-slide a{position: absolute;bottom: 50px;left: 0;right: 0;margin: auto;}
+
+.notice .promotion .swiper .swiper-pagination-bullet{
+  background:transparent #1E3932;
+  width: 13px;height: 13px;outline: none;background-size: contain;
+}
+.notice .promotion .swiper .swiper-pagination-bullet-active{
+  background: #1E3932;
+}
+
+.notice .promotion .swiper .swiper-prev,
+.notice .promotion .swiper .swiper-next{
+  width: 42px;height: 42px;outline: none;border: 2px solid #333;
+  position: absolute;top: 270px;z-index: 5;border-radius: 50%;cursor: pointer;display: flex;justify-content: center;align-items: center;  
+}
+.notice .promotion .swiper .swiper-prev{left: 50%;margin-left: -470px;}
+.notice .promotion .swiper .swiper-next{right: 50%;margin-right: -470px;}
+.notice .promotion .swiper .swiper-prev:hover,
+.notice .promotion .swiper .swiper-next:hover{
+  background: #333;color: #fff;
+}
+
+/* REWARES area */
+.rewards{position: relative;z-index: 10;}
+.rewards .bg-left{
+  width: 50%;
+  height: 100%;
+  background: #272727;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.rewards .bg-right{
+  width: 50%;
+  height: 100%;
+  background: #d5c798;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.rewards .inner{
+  background: url(../images/rewards.jpg);
+  height: 241px;
+}
+.rewards .inner .btn-group{
+  position: absolute;
+  right: 0;
+  bottom: 25px;
+  width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rewards .inner .btn-group .sign-in{
+  width: 130px;
+  margin-right: 10px;
+}
+.rewards .inner .btn-group .sign-up{
+  width: 110px;
+}
+.rewards .inner .btn-group .gift{
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+
+
+/* season-product area ----------------*/
+.season-product{
+  background: url(../images/2023_summer_promotion_bg.jpg);
+  height: 500px;
+}
+.season-product .inner{
+  height: 400px;
+}
+.season-product .inner .delay-0{
+  position: absolute;
+  top: -40px;
+  left: 100px;
+}
+
+.season-product .inner .text-group{
+  position: absolute;
+  top: 110px;
+  right: 100px;
+}
+.season-product .inner .text-group .btn{
+  margin-top: 30px;
+}
+
+
+/* RESERVE COFFEE area-------------------------- */
+.reserve-coffee{
+  background: url(../images/reserve_bg.jpg);
+}
+.reserve-coffee .inner{
+  height: 400px;
+}
+.reserve-coffee .inner .reserve_logo{
+  position: absolute;
+  top: 110px;
+  left: 0;
+}
+.reserve-coffee .inner .text-group{
+  position: absolute;
+  top: 124px;
+  left: 208px;
+}
+.reserve-coffee .inner .reserve_img{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+
+/* PICK YOUR FAVORITE area --------------------------------- */
+.pick-your-favorite{
+  background: url(../images/favorite_bg.jpg) no-repeat center fixed;
+  background-size: cover;
+}
+.pick-your-favorite .inner{
+  padding: 110px 0;
+}
+.pick-your-favorite .inner .text-group{
+  width: 360px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.pick-your-favorite .inner .text-group .text2{margin: 40px 0;}
+
+/* RESERVE STORE area ------------------------------------------ */
+.reserve-store{
+  background: url(../images/reserve_store_bg.jpg)no-repeat center fixed;
+  background-size: cover;
+}
+.reserve-store .inner{
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reserve-store .inner .medal{
+  width: 334px;
+  height: 334px;
+  cursor: pointer;
+  perspective: 600px;
+}
+
+.reserve-store .inner .medal .front,
+.reserve-store .inner .medal .back{
+  width: 334;
+  height: 334px;
+  backface-visibility: hidden;
+  transition: all 1s;
+  position: absolute;
+}
+
+.reserve-store .inner .medal .front{
+  position: absolute;
+  transform: rotateY(0);
+}
+.reserve-store .inner .medal:hover .front{
+  transform: rotateY(-180deg);
+}
+.reserve-store .inner .medal .back{
+  transform: rotateY(-180deg);
+}
+.reserve-store .inner .medal:hover .back{
+  transform: rotateY(0);
+}
+
+.reserve-store .inner .medal .back .btn{
+  position: absolute;
+  top: 230px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+
+/* FIND THE  STORE area -------------------------------- */
+.find-store{
+  background: url(../images/find_store_bg.jpg);
+}
+.find-store .inner{
+  height: 400px;
+}
+
+.find-store .inner .texture1{
+  position: absolute;
+  top: 0;
+  left: 400px;
+}
+.find-store .inner .texture2{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.find-store .inner .picture{
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.5); 
+}
+.find-store .inner .picture1{
+  top: -60px;
+  left: 0;
+}
+.find-store .inner .picture2{
+  top: 150px;
+  left: 250px;
+}
+
+.find-store .inner .text-group{
+  position: absolute;
+  left: 550px;
+  top: 120px;
+}
+.find-store .inner .text-group .text2{
+  margin: 20px 0;
+}
+
+
+/* AWARDS area----------------------- */
+.awards{
+  background: #272727;
+}
+.awards .inner{
+  padding: 40px 0;
+}
+.awards .inner .swiper{
+  width: 100%;
+  height: 40px;
+}
+
+.awards .inner .swiper-prev,
+.awards .inner .swiper-next{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #c8c8c8;
+  opacity: 0.3;
+  transition: all 0.3s;
+}
+.awards .inner .swiper-prev:hover,
+.awards .inner .swiper-next:hover{
+  background: #fff;
+  color: #333;
+}
+.awards .inner .swiper-prev{left: -100px;}
+.awards .inner .swiper-next{right: -100px;}
+
+
+/* 푸터 영역------------------------------ */
+footer{
+  background: #272727;
+  border-top: 1px solid #333;
+}
+footer .inner{
+  padding: 40px 0 60px;
+}
+footer .inner .menu{
+  display: flex;
+  justify-content: center;
+}
+footer .inner .menu li{
+  position: relative;
+}
+footer .inner .menu li::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 3px;
+  height: 3px;
+  background: #555;
+}
+footer .inner .menu li a{
+  padding: 15px;
+  color: #ccc;
+}
+
+footer .inner .menu li:first-child::before{
+  display: none;
+}
+footer .inner .menu li:first-child a{
+  color: #669900;
+  font-weight: bold;
+}
+
+footer .inner .btn-group{
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+footer .inner .btn-group a{
+  color: #ccc;
+  border: 2px solid #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+footer .inner .btn-group a:nth-child(2){
+  margin: 0 20px;
+}
+footer .inner .btn-group a:hover{
+  background: #fff;
+  color: #333;
+}
+
+footer .inner address{
+  text-align: center;
+  color: #999;
+}
+footer .inner address span{
+  margin: 0 15px;
+}
+
+footer .inner .copyright{
+  text-align: center;
+  color: #999;
+  margin: 10px 0 20px;
+}
+
+footer .inner img{
+  margin: auto;
+}
+
+
+/* 탑버튼 */
+#to-top{
+  position: fixed;
+  right: 20px;
+  bottom: 30px;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: #333;
+  z-index: 15;
+}
+
+
